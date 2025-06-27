@@ -247,7 +247,7 @@ void add_transaction() {
     }
     t.amount = amount;
 
-    printf("Type (I/E): ");
+    printf("Type (I For Income /E For Expense): ");
     char type;
     scanf(" %c", &type);
     type = toupper(type);
@@ -410,7 +410,7 @@ void edit_budget() {
         strcpy(temp, budgets[i].category);
         normalize(temp);
         if (strcmp(temp, category) == 0) {
-            printf("Current budget: $%.2f\n", budgets[i].budget);
+            printf("Current budget: Rs %.2f\n", budgets[i].budget);
             printf("Enter new budget amount: ");
             float newBudget;
             if (scanf("%f", &newBudget) != 1 || newBudget <= 0) {
@@ -528,7 +528,7 @@ void edit_debt() {
     for (int i = 0; i < debt_count; i++) {
         if (strcmp(debts[i].name, name) == 0) {
             printf("Editing %s\n", name);
-            printf("New principal (current $%.2f): ", debts[i].principal);
+            printf("New principal (current Rs %.2f): ", debts[i].principal);
             if (scanf("%f", &debts[i].principal) != 1 || debts[i].principal <= 0) {
                 printf("Invalid principal.\n");
                 while(getchar() != '\n');
@@ -633,7 +633,7 @@ void display_top_debts() {
 
     for (int i = 0; i < debt_count; i++) {
         int idx = sorted[i].index;
-        printf("%d. %s -> $%.2f/mo\n", i+1, debts[idx].name, sorted[i].priority);
+        printf("%d. %s -> Rs %.2f/mo\n", i+1, debts[idx].name, sorted[i].priority);
     }
 }
 
